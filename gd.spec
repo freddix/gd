@@ -1,13 +1,12 @@
 Summary:	Library for PNG, JPEG creation
 Name:		gd
-Version:	2.0.35
-Release:	17
+Version:	2.1.0
+Release:	1
 License:	BSD-like
 Group:		Libraries
-Source0:	http://www.libgd.org/releases/%{name}-%{version}.tar.bz2
-# Source0-md5:	6c6c3dbb7bf079e0bb5fbbfd3bb8a71c
-Patch0:		%{name}-fontpath.patch
-URL:		http://www.boutell.com/gd/
+Source0:	https://bitbucket.org/libgd/gd-libgd/downloads/libgd-%{version}.tar.xz
+# Source0-md5:	03588159bf4faab9079849c8d709acc6
+URL:		http://www.libgd.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fontconfig-devel
@@ -17,6 +16,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
+BuildRequires:	libvpx-devel
 BuildRequires:	xorg-libXpm-devel
 BuildRequires:	zlib-devel
 Provides:	gd(gif) = %{version}-%{release}
@@ -59,11 +59,10 @@ manipulating the graphics files in formats which are supported by the
 libgd library.
 
 %prep
-%setup -q
-%patch0 -p1
+%setup -qn libgd-%{version}
 
 # hack to avoid inclusion of -s in --ldflags
-sed -i -e 's,\@LDFLAGS\@,,g' config/gdlib-config.in
+%{__sed} -i 's,\@LDFLAGS\@,,g' config/gdlib-config.in
 
 %build
 %{__libtoolize}
@@ -89,7 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING index.html
+%doc COPYING NEWS
 %attr(755,root,root) %ghost %{_libdir}/libgd.so.?
 %attr(755,root,root) %{_libdir}/libgd.so.*.*.*
 
@@ -99,6 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libgd.so
 %{_libdir}/libgd.la
 %{_includedir}/*.h
+%{_pkgconfigdir}/gdlib.pc
 
 %files progs
 %defattr(644,root,root,755)
