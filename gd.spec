@@ -1,7 +1,7 @@
 Summary:	Library for PNG, JPEG creation
 Name:		gd
 Version:	2.1.0
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Libraries
 Source0:	https://bitbucket.org/libgd/gd-libgd/downloads/libgd-%{version}.tar.xz
@@ -63,6 +63,9 @@ libgd library.
 
 # hack to avoid inclusion of -s in --ldflags
 %{__sed} -i 's,\@LDFLAGS\@,,g' config/gdlib-config.in
+
+# don't fail on AM warnings
+%{__sed} -i 's,-Werror,,' configure.ac
 
 %build
 %{__libtoolize}
