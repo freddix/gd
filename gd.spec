@@ -1,7 +1,7 @@
 Summary:	Library for PNG, JPEG creation
 Name:		gd
 Version:	2.1.0
-Release:	2
+Release:	3
 License:	BSD-like
 Group:		Libraries
 Source0:	https://bitbucket.org/libgd/gd-libgd/downloads/libgd-%{version}.tar.xz
