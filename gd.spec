@@ -1,7 +1,8 @@
-Summary:	Library for PNG, JPEG creation
+# based on PLD Linux spec git://git.pld-linux.org/packages/.git
+Summary:	Dynamic image creation library
 Name:		gd
 Version:	2.1.0
-Release:	3
+Release:	4
 License:	BSD-like
 Group:		Libraries
 Source0:	https://bitbucket.org/libgd/gd-libgd/downloads/libgd-%{version}.tar.xz
@@ -83,6 +84,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -99,7 +102,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/gdlib-config
 %attr(755,root,root) %{_libdir}/libgd.so
-%{_libdir}/libgd.la
 %{_includedir}/*.h
 %{_pkgconfigdir}/gdlib.pc
 
