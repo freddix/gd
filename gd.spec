@@ -1,12 +1,12 @@
-# based on PLD Linux spec git://git.pld-linux.org/packages/.git
+# based on PLD Linux spec git://git.pld-linux.org/packages/libgd.git
 Summary:	Dynamic image creation library
 Name:		gd
-Version:	2.1.0
-Release:	4
+Version:	2.1.1
+Release:	1
 License:	BSD-like
 Group:		Libraries
 Source0:	https://bitbucket.org/libgd/gd-libgd/downloads/libgd-%{version}.tar.xz
-# Source0-md5:	03588159bf4faab9079849c8d709acc6
+# Source0-md5:	9076f3abd1f9815d106da36467ea15bc
 URL:		http://www.libgd.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
